@@ -30,9 +30,6 @@ public class LoginPage extends BasePage
     @FindBy(xpath = "//h2[@class='message']")
     WebElement popUpMessage;
 
-    @FindBy(xpath = "//h2[@class='message']")
-    WebElement mistakeMessage;
-
 
     public void clickBtnOk()
     {
@@ -51,13 +48,8 @@ public class LoginPage extends BasePage
         btnYalla.click();
     }
 
-    public boolean isPopUpMessagePresentLogin()
+    public boolean MessageLogin(String text)
     {
-        return isTextInElementPresent(popUpMessage, "Logged in success");
-    }
-
-    public boolean isMistakeMessagePresentLogin()
-    {
-       return isTextInElementPresent(mistakeMessage, "Login or Password incorrect");
+        return isTextInElementPresent(popUpMessage, text);
     }
 }

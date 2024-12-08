@@ -3,7 +3,6 @@ package pages;
 import dto.UserDtoLombok;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
@@ -37,6 +36,15 @@ public class RegistrationPage extends BasePage
     @FindBy(xpath = "//h2[@class='message']")
     WebElement popUpMessage;
 
+    @FindBy(xpath = "//div[text()='Wrong email format']")
+    WebElement highlightedFieldEmail;
+
+    @FindBy(xpath = "//div[text()='Password must contain minimum 8 symbols']")
+    WebElement highlightedFieldPasswordSymbols;
+
+    @FindBy(xpath = "//div[text()='Password must contain 1 uppercase letter, 1 lowercase letter, 1 number and one special symbol of [@$#^&*!]']")
+    WebElement highlightedFieldPassword;
+
     public void typeRegistrationForm(UserDtoLombok user)
     {
         inputName.sendKeys(user.getName());
@@ -57,9 +65,28 @@ public class RegistrationPage extends BasePage
         btnYalla.click();
     }
 
-    public boolean isPopIpMessagePresent()
+    public boolean registrationMessage(String text)
     {
-        return isTextInElementPresent(popUpMessage, "You are logged in success");
+        return isTextInElementPresent(popUpMessage, text) ;
     }
 
+    public boolean registrationHighlightedFieldEmail(String text)
+    {
+        return isTextInElementPresent(highlightedFieldEmail, text);
+    }
+
+    public boolean registrationHighlightedFieldPassword(String text)
+    {
+        return isTextInElementPresent(highlightedFieldPasswordSymbols, text);
+    }
+    public boolean registrationHighlightedFieldPassword1(String text)
+    {
+        return isTextInElementPresent(highlightedFieldPassword, text);
+    }
+
+    public boolean disabledBtn()
+    {
+        btnYalla.isEnabled();
+        return false;
+    }
 }

@@ -55,7 +55,7 @@ public class LoginTests extends AppManager
             searchPage.clickBtnLogIn();
             loginPage.typeLoginForm(user);
             loginPage.clickBtnYalla();
-            Assert.assertTrue(loginPage.isPopUpMessagePresentLogin());
+            Assert.assertTrue(loginPage.MessageLogin("Logged in success"));
         }
 
         @Test
@@ -72,6 +72,6 @@ public class LoginTests extends AppManager
             searchPage.clickBtnLogIn();
             loginPage.typeLoginForm(user);
             loginPage.clickBtnYalla();
-            Assert.assertTrue(loginPage.isMistakeMessagePresentLogin());
+            Assert.assertTrue(loginPage.MessageLogin("Login or Password incorrect"));
         }
 }
