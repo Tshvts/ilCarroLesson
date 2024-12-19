@@ -24,21 +24,26 @@ public class SearchPage extends BasePage
     @FindBy(xpath = "//a[text()=' Log in ']")
     WebElement btnLogIn;
 
+    @FindBy(xpath = "//a[text()=' Let the car work ']")
+    WebElement btnLetTheCarWork;
+
     public void clickBtnSignUp()
     {
         btnSignUp.click();
-        pause(2);
     }
 
     public void clickBtnLogOut()
     {
         btnLogOut.click();
-        pause(2);
     }
 
     public void clickBtnLogIn()
     {
         btnLogIn.click();
-        pause(2);
+    }
+
+    public void clickBtnLetTheCarWork()
+    {
+        clickWait(btnLetTheCarWork,5);
     }
 }

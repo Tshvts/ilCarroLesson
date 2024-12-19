@@ -51,7 +51,6 @@ public class RegistrationPage extends BasePage
         inputLastName.sendKeys(user.getLastName());
         inputEmail.sendKeys(user.getEmail());
         inputPwd.sendKeys(user.getPassword());
-        pause(2);
     }
 
     public void clickCheckbox()
@@ -61,8 +60,12 @@ public class RegistrationPage extends BasePage
 
     public void clickBtnYalla()
     {
-        pause(2);
         btnYalla.click();
+    }
+
+    public boolean registrationMessage()
+    {
+        return isTextInElementPresent(popUpMessage, "You are logged in success") ;
     }
 
     public boolean registrationMessage(String text)
@@ -86,7 +89,6 @@ public class RegistrationPage extends BasePage
 
     public boolean disabledBtn()
     {
-        btnYalla.isEnabled();
-        return false;
+        return !btnYalla.isEnabled();
     }
 }

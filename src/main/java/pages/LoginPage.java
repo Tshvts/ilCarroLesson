@@ -40,7 +40,6 @@ public class LoginPage extends BasePage
     {
         inputEmail.sendKeys(user.getEmail());
         inputPwd.sendKeys(user.getPassword());
-        pause(2);
     }
 
     public void clickBtnYalla()

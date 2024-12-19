@@ -133,6 +133,6 @@ public class RegistrationTests extends AppManager
         new SearchPage(getDriver()).clickBtnSignUp();
         registrationPage = new RegistrationPage(getDriver());
         registrationPage.typeRegistrationForm(user);
-        Assert.assertFalse(registrationPage.disabledBtn());
+        Assert.assertTrue(registrationPage.disabledBtn());
     }
 }
