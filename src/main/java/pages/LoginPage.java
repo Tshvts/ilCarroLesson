@@ -27,13 +27,9 @@ public class LoginPage extends BasePage
     @FindBy(xpath = "//button[@type='submit']")
     WebElement btnYalla;
 
-    @FindBy(xpath = "//h2[@class='message']")
-    WebElement popUpMessage;
-
-
     public void clickBtnOk()
     {
-        btnOk.click();
+        clickWait(btnOk,5);
     }
 
     public void typeLoginForm(UserDtoLombok user)

@@ -1,6 +1,6 @@
 package pages;
 
-import dto.CreateCarDto;
+import dto.CarDto;
 import enums.Fuel;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -21,7 +21,10 @@ public class CreateCarPage extends BasePage
     }
 
     @FindBy(xpath = "//input[@id='pickUpPlace']")
-    WebElement fieldAddress;
+    WebElement fieldCity;
+
+    @FindBy(xpath = "//div[@class='pac-item']")
+    WebElement locationSubmit;
 
     @FindBy(xpath = "//input[@id='make']")
     WebElement fieldManufacture;
@@ -56,29 +59,25 @@ public class CreateCarPage extends BasePage
     @FindBy(xpath = "//button[text()='Submit']")
     WebElement btnSubmit;
 
-
-    public void typeFormCreatingCar(CreateCarDto createCar)
+    public void typeLetCarWorkForm(CarDto car)
     {
-        fieldManufacture.sendKeys(createCar.getManufacture());
-        fieldModel.sendKeys(createCar.getModel());
-        fieldYear.sendKeys(createCar.getYear());
-        selectTypeFuel(createCar.getFuels());
-        fieldSeats.sendKeys(createCar.getSeats());
-        fieldCarClass.sendKeys(createCar.getCarClass());
-        fieldRegistrationNumber.sendKeys(createCar.getCarRegistrationNumber());
-        fieldPrice.sendKeys(createCar.getPrice());
-        fieldAbout.sendKeys(createCar.getAbout());
-        btnSubmit.click();
+        fieldCity.sendKeys(car.getCity());
+        clickWait(locationSubmit,5);
+        fieldManufacture.sendKeys(car.getManufacture());
+        fieldModel.sendKeys(car.getModel());
+        fieldYear.sendKeys(car.getYear());
+        fieldFuel.click();
+        clickWait(driver.findElement(By.xpath(car.getFuel())),5);
+        fieldSeats.sendKeys(car.getSeats() + "");
+        fieldCarClass.sendKeys(car.getCarClass());
+        fieldRegistrationNumber.sendKeys(car.getSerialNumber());
+        fieldPrice.sendKeys(Double.toString(car.getPrice()));
+        fieldAbout.sendKeys(car.getAbout());
+        clickWait(btnSubmit,5);
     }
 
-    private void selectTypeFuel(List<Fuel> fuels)
+    public boolean isPopUpMessagePresent(String text)
     {
-        fieldFuel.click();
-        selectFuelType.click();
-        for (Fuel h: fuels)
-        {
-            WebElement fuelElement = driver.findElement(By.xpath(h.getLocator()));
-            fuelElement.click();
-        }
+        return isTextInElementPresent(popUpMessage, text);
     }
 }

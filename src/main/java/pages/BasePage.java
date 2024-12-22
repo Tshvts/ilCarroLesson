@@ -3,6 +3,7 @@ package pages;
 import lombok.Setter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -23,12 +24,11 @@ public class BasePage
         new WebDriverWait(driver, time).until(ExpectedConditions.elementToBeClickable(element)).click();
     }
 
-    public void pause(int time)
+    @FindBy(xpath = "//h2[@class='message']")
+    WebElement popUpMessage;
+
+    public boolean validateUrl(String url, int time)
     {
-        try {
-            Thread.sleep(time);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+       return new WebDriverWait(driver,time).until(ExpectedConditions.urlContains(url));
     }
 }

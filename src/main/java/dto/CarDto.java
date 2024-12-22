@@ -13,16 +13,17 @@ import java.util.List;
 @Setter
 @Builder
 
-public class CreateCarDto
+public class CarDto
 {
-    private String address;
+    private String serialNumber;
     private String manufacture;
     private String model;
     private String year;
-    private List<Fuel> fuels;
-    private String seats;
+    private String fuel;
+    private int seats;
     private String carClass;
-    private String carRegistrationNumber;
-    private String price;
+    private double price;
     private String about;
+    private String city;
+    private String image;
 }
