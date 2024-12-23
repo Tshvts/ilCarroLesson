@@ -64,6 +64,159 @@ public class CreateCarTests extends AppManager
                .about("About my car")
                .build();
        createCarPage.typeLetCarWorkForm(car);
+       createCarPage.clickBtnSubmit();
        Assert.assertTrue(createCarPage.isPopUpMessagePresent(car.getManufacture() + " " + car.getModel() + " " + "added successful"));
+    }
+
+    @Test
+    public void createCarNegativeTest_WrongCity()
+    {
+       CarDto car = CarDto.builder()
+               .serialNumber(new Random().nextInt(1000) + "Nfd")
+               .city(new Random().nextInt(1000) + "")
+               .manufacture("Mazda")
+               .model("CX-99")
+               .year("2022")
+               .fuel(Fuel.HYBRID.getLocator())
+               .seats(4)
+               .carClass("A")
+               .price(123.99)
+               .about("About my car")
+               .build();
+       createCarPage.typeLetCarWorkForm(car);
+       createCarPage.clickBtnSubmit();
+       Assert.assertTrue(createCarPage.errorMessage("Car adding failed"));
+    }
+
+    @Test
+    public void createCarNegativeTest_EmptyManufacture()
+    {
+       CarDto car = CarDto.builder()
+               .serialNumber(new Random().nextInt(1000) + "Nfd")
+               .city("Haifa")
+               .manufacture("")
+               .model("CX-99")
+               .year("2022")
+               .fuel(Fuel.HYBRID.getLocator())
+               .seats(4)
+               .carClass("A")
+               .price(123.99)
+               .about("About my car")
+               .build();
+       createCarPage.typeLetCarWorkForm(car);
+       Assert.assertTrue(createCarPage.isBtnSubmitClickable());
+    }
+
+    @Test
+    public void createCarNegativeTest_EmptyModel()
+    {
+       CarDto car = CarDto.builder()
+               .serialNumber(new Random().nextInt(1000) + "Nfd")
+               .city("Haifa")
+               .manufacture("Mazda")
+               .model("")
+               .year("2022")
+               .fuel(Fuel.HYBRID.getLocator())
+               .seats(4)
+               .carClass("A")
+               .price(123.99)
+               .about("About my car")
+               .build();
+       createCarPage.typeLetCarWorkForm(car);
+       Assert.assertTrue(createCarPage.isBtnSubmitClickable());
+    }
+
+    @Test
+    public void createCarNegativeTest_WrongYear()
+    {
+       CarDto car = CarDto.builder()
+               .serialNumber(new Random().nextInt(1000) + "Nfd")
+               .city("Haifa")
+               .manufacture("Mazda")
+               .model("CX-99")
+               .year(new Random().nextInt(10000, 20000) + "")
+               .fuel(Fuel.HYBRID.getLocator())
+               .seats(4)
+               .carClass("A")
+               .price(123.99)
+               .about("About my car")
+               .build();
+       createCarPage.typeLetCarWorkForm(car);
+       Assert.assertTrue(createCarPage.isBtnSubmitClickable());
+    }
+
+    @Test
+    public void createCarNegativeTest_EmptyFuel()
+    {
+       CarDto car = CarDto.builder()
+               .serialNumber(new Random().nextInt(1000) + "Nfd")
+               .city("Haifa")
+               .manufacture("Mazda")
+               .model("CX-99")
+               .year("2022")
+               .seats(4)
+               .carClass("A")
+               .price(123.99)
+               .about("About my car")
+               .build();
+       createCarPage.typeLetCarWorkForm_EmptyFuel(car);
+       Assert.assertTrue(createCarPage.isBtnSubmitClickable());
+    }
+
+    @Test
+    public void createCarNegativeTest_WrongSeats()
+    {
+       CarDto car = CarDto.builder()
+               .serialNumber(new Random().nextInt(1000) + "Nfd")
+               .city("Haifa")
+               .manufacture("Mazda")
+               .model("CX-99")
+               .year("2022")
+               .fuel(Fuel.HYBRID.getLocator())
+               .seats(21)
+               .carClass("A")
+               .price(123.99)
+               .about("About my car")
+               .build();
+       createCarPage.typeLetCarWorkForm(car);
+       Assert.assertTrue(createCarPage.isBtnSubmitClickable());
+    }
+
+    @Test
+    public void createCarNegativeTest_EmptyCarClass()
+    {
+       CarDto car = CarDto.builder()
+               .serialNumber(new Random().nextInt(1000) + "Nfd")
+               .city("Haifa")
+               .manufacture("Mazda")
+               .model("CX-99")
+               .year("2022")
+               .fuel(Fuel.HYBRID.getLocator())
+               .seats(4)
+               .carClass("")
+               .price(123.99)
+               .about("About my car")
+               .build();
+       createCarPage.typeLetCarWorkForm(car);
+       Assert.assertTrue(createCarPage.isBtnSubmitClickable());
+    }
+
+    @Test
+    public void createCarNegativeTest_WrongPrice()
+    {
+       CarDto car = CarDto.builder()
+               .serialNumber(new Random().nextInt(1000) + "Nfd")
+               .city("Haifa")
+               .manufacture("Mazda")
+               .model("CX-99")
+               .year("2022")
+               .fuel(Fuel.HYBRID.getLocator())
+               .seats(4)
+               .carClass("A")
+               .price(12399)
+               .about("About my car")
+               .build();
+       createCarPage.typeLetCarWorkForm(car);
+       Assert.assertTrue(createCarPage.isBtnSubmitClickable());
     }
 }

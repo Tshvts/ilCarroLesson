@@ -9,8 +9,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
-
-import java.util.List;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CreateCarPage extends BasePage
 {
@@ -59,6 +59,9 @@ public class CreateCarPage extends BasePage
     @FindBy(xpath = "//button[text()='Submit']")
     WebElement btnSubmit;
 
+    @FindBy(xpath = "//h1[text()='Car adding failed']")
+    WebElement errorMessage;
+
     public void typeLetCarWorkForm(CarDto car)
     {
         fieldCity.sendKeys(car.getCity());
@@ -73,11 +76,39 @@ public class CreateCarPage extends BasePage
         fieldRegistrationNumber.sendKeys(car.getSerialNumber());
         fieldPrice.sendKeys(Double.toString(car.getPrice()));
         fieldAbout.sendKeys(car.getAbout());
+    }
+
+    public void typeLetCarWorkForm_EmptyFuel(CarDto car)
+    {
+        fieldCity.sendKeys(car.getCity());
+        clickWait(locationSubmit,5);
+        fieldManufacture.sendKeys(car.getManufacture());
+        fieldModel.sendKeys(car.getModel());
+        fieldYear.sendKeys(car.getYear());
+        fieldSeats.sendKeys(car.getSeats() + "");
+        fieldCarClass.sendKeys(car.getCarClass());
+        fieldRegistrationNumber.sendKeys(car.getSerialNumber());
+        fieldPrice.sendKeys(Double.toString(car.getPrice()));
+        fieldAbout.sendKeys(car.getAbout());
+    }
+
+    public void clickBtnSubmit()
+    {
         clickWait(btnSubmit,5);
     }
 
     public boolean isPopUpMessagePresent(String text)
     {
         return isTextInElementPresent(popUpMessage, text);
+    }
+
+    public boolean errorMessage(String text)
+    {
+       return new WebDriverWait(driver, 5).until(ExpectedConditions.textToBePresentInElement(errorMessage,text));
+    }
+
+    public boolean isBtnSubmitClickable()
+    {
+       return new WebDriverWait(driver,3).until(ExpectedConditions.not(ExpectedConditions.elementToBeClickable(btnSubmit)));
     }
 }
