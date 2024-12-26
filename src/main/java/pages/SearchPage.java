@@ -7,6 +7,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SearchPage extends BasePage
 {
@@ -34,6 +36,9 @@ public class SearchPage extends BasePage
 
     @FindBy(xpath = "//input[@id='dates']")
     WebElement fieldDates;
+
+    @FindBy(xpath = "//div[@class='cdk-overlay-container']")
+    WebElement clickScreen;
 
     public void clickBtnSignUp()
     {
@@ -64,5 +69,6 @@ public class SearchPage extends BasePage
         fieldDates.click();
         fieldDates.sendKeys(startDate + " - " + endDate);
         fieldDates.sendKeys(Keys.ENTER);
+        clickWait(clickScreen,5);
     }
 }
