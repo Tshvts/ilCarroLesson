@@ -14,7 +14,7 @@ public class SearchCarTests extends AppManager
     public void searchCarPositiveTest()
     {
         searchPage = new SearchPage(getDriver());
-        searchPage.fillSearchCarFormWOCalendar("Haifa", "12/25/2024", "12/27/2024");
+        searchPage.fillSearchCarFormWOCalendar("Haifa", "12/02/2025", "12/03/2025");
         resultsPage = new ResultsPage(getDriver());
         Assert.assertTrue(resultsPage.isUrlResultsPresent());
     }

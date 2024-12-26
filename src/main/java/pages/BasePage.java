@@ -1,6 +1,7 @@
 package pages;
 
 import lombok.Setter;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -30,5 +31,19 @@ public class BasePage
     public boolean validateUrl(String url, int time)
     {
        return new WebDriverWait(driver,time).until(ExpectedConditions.urlContains(url));
+    }
+
+    public boolean isElementPresentDOM(String locator, int time)
+    {
+        try
+        {
+            new WebDriverWait(driver, time).until(ExpectedConditions.presenceOfElementLocated(By.xpath(locator)));
+            return true;
+        }
+        catch (Exception e)
+        {
+            System.out.println("isElementPresent created exception");
+            return false;
+        }
     }
 }

@@ -11,6 +11,7 @@ import pages.CreateCarPage;
 import pages.LoginPage;
 import pages.SearchPage;
 import utilits.RandomUtils;
+import utilits.RetryAnalyzer;
 
 import java.util.Random;
 import java.util.Random.*;
@@ -48,7 +49,7 @@ public class CreateCarTests extends AppManager
             System.out.println("Smth went wrong");
     }
 
-    @Test
+    @Test(retryAnalyzer = RetryAnalyzer.class)
     public void createCarPositiveTest()
     {
        CarDto car = CarDto.builder()
@@ -104,7 +105,7 @@ public class CreateCarTests extends AppManager
                .about("About my car")
                .build();
        createCarPage.typeLetCarWorkForm(car);
-       Assert.assertTrue(createCarPage.isBtnSubmitClickable());
+       Assert.assertTrue(createCarPage.isElementPresentDOM("//*[text() = ' Make is required ']",5));
     }
 
     @Test
@@ -123,7 +124,7 @@ public class CreateCarTests extends AppManager
                .about("About my car")
                .build();
        createCarPage.typeLetCarWorkForm(car);
-       Assert.assertTrue(createCarPage.isBtnSubmitClickable());
+        Assert.assertTrue(createCarPage.isElementPresentDOM("//*[text() = ' Model is required ']",5));
     }
 
     @Test
@@ -142,7 +143,7 @@ public class CreateCarTests extends AppManager
                .about("About my car")
                .build();
        createCarPage.typeLetCarWorkForm(car);
-       Assert.assertTrue(createCarPage.isBtnSubmitClickable());
+        Assert.assertTrue(createCarPage.isElementPresentDOM("//*[text() = ' Wrong year ']",5));
     }
 
     @Test
@@ -179,7 +180,7 @@ public class CreateCarTests extends AppManager
                .about("About my car")
                .build();
        createCarPage.typeLetCarWorkForm(car);
-       Assert.assertTrue(createCarPage.isBtnSubmitClickable());
+        Assert.assertTrue(createCarPage.isElementPresentDOM("//*[text() = ' To much seats ']",5));
     }
 
     @Test
@@ -198,7 +199,7 @@ public class CreateCarTests extends AppManager
                .about("About my car")
                .build();
        createCarPage.typeLetCarWorkForm(car);
-       Assert.assertTrue(createCarPage.isBtnSubmitClickable());
+        Assert.assertTrue(createCarPage.isElementPresentDOM("//*[text() = ' Car class is required ']",5));
     }
 
     @Test
@@ -217,6 +218,6 @@ public class CreateCarTests extends AppManager
                .about("About my car")
                .build();
        createCarPage.typeLetCarWorkForm(car);
-       Assert.assertTrue(createCarPage.isBtnSubmitClickable());
+        Assert.assertTrue(createCarPage.isElementPresentDOM("//*[text() = ' To much big price ']",5));
     }
 }
