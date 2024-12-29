@@ -35,7 +35,7 @@ public class SearchCarTests extends AppManager
     public void searchCarNegativeTest_WrongDateBefore()
     {
         searchPage = new SearchPage(getDriver());
-        searchPage.fillSearchCarFormWOCalendar("Haifa", "12/02/2025", "12/03/2023");
+        searchPage.fillSearchCarFormWOCalendarNegative("Haifa", "12/02/2025", "12/03/2023");
         resultsPage = new ResultsPage(getDriver());
         Assert.assertTrue(searchPage.isElementPresentDOM("//div[@class='error ng-star-inserted']",3));
     }
@@ -44,8 +44,18 @@ public class SearchCarTests extends AppManager
     public void searchCarNegativeTest_EmptyDate()
     {
         searchPage = new SearchPage(getDriver());
-        searchPage.fillSearchCarFormWOCalendar("Haifa", "", "12/03/2023");
+        searchPage.fillSearchCarFormWOCalendarNegative("Haifa", "", "12/03/2023");
         resultsPage = new ResultsPage(getDriver());
         Assert.assertTrue(searchPage.isElementPresentDOM("//div[@class='error ng-star-inserted']",3));
+    }
+
+
+    @Test
+    public void searchCarPositiveTestWithCalendar()
+    {
+        searchPage = new SearchPage(getDriver());
+        searchPage.fillSearchCarFormWithCalendar("Haifa", "Oct/2/2025", "Dec/3/2025");
+        resultsPage = new ResultsPage(getDriver());
+        Assert.assertTrue(resultsPage.isUrlResultsPresent());
     }
 }
