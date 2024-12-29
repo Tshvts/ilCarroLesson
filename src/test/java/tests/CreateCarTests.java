@@ -1,5 +1,6 @@
 package tests;
 
+import data_provider.DPAddCar;
 import dto.CarDto;
 import dto.UserDtoLombok;
 import enums.Fuel;
@@ -68,6 +69,14 @@ public class CreateCarTests extends AppManager
        createCarPage.clickBtnSubmit();
        Assert.assertTrue(createCarPage.isPopUpMessagePresent(car.getManufacture() + " " + car.getModel() + " " + "added successful"));
     }
+    //HW 15
+    @Test(dataProvider = "addNewCarPositive", dataProviderClass = DPAddCar.class)
+    public void createCarPositiveTestDP(CarDto car)
+    {
+       createCarPage.typeLetCarWorkForm(car);
+       createCarPage.clickBtnSubmit();
+       Assert.assertTrue(createCarPage.isPopUpMessagePresent(car.getManufacture() + " " + car.getModel() + " " + "added successful"));
+    }
 
     @Test
     public void createCarNegativeTest_WrongCity()
@@ -84,6 +93,14 @@ public class CreateCarTests extends AppManager
                .price(123.99)
                .about("About my car")
                .build();
+       createCarPage.typeLetCarWorkForm(car);
+       createCarPage.clickBtnSubmit();
+       Assert.assertTrue(createCarPage.errorMessage("Car adding failed"));
+    }
+    //HW15
+    @Test(dataProvider = "addCarNegative_WrongCity", dataProviderClass = DPAddCar.class)
+    public void createCarNegativeTest_WrongCityDP(CarDto car)
+    {
        createCarPage.typeLetCarWorkForm(car);
        createCarPage.clickBtnSubmit();
        Assert.assertTrue(createCarPage.errorMessage("Car adding failed"));

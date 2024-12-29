@@ -53,6 +53,7 @@ public class SearchCarTests extends AppManager
     @Test
     public void searchCarPositiveTestWithCalendar()
     {
+        logger.info("Test searchCarPositiveTestWithCalendar-->" + "Haifa" + "Oct/2/2025" + "Dec/3/2025");
         searchPage = new SearchPage(getDriver());
         searchPage.fillSearchCarFormWithCalendar("Haifa", "Oct/2/2025", "Dec/3/2025");
         resultsPage = new ResultsPage(getDriver());
