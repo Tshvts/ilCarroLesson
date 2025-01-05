@@ -5,12 +5,16 @@ import lombok.Getter;
 import manager.AppManager;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.LoginPage;
 import pages.RegistrationPage;
 import pages.SearchPage;
+import utilits.TestNGListener;
 
 import java.util.Random;
+
+@Listeners(TestNGListener.class)
 
 public class LoginTests extends AppManager
 {

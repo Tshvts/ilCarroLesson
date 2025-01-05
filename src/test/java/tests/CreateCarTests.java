@@ -7,16 +7,20 @@ import enums.Fuel;
 import manager.AppManager;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.CreateCarPage;
 import pages.LoginPage;
 import pages.SearchPage;
 import utilits.RandomUtils;
 import utilits.RetryAnalyzer;
+import utilits.TestNGListener;
 
+import java.lang.reflect.Method;
 import java.util.Random;
 import java.util.Random.*;
 
+@Listeners(TestNGListener.class)
 
 public class CreateCarTests extends AppManager
 {
@@ -73,6 +77,15 @@ public class CreateCarTests extends AppManager
     @Test(dataProvider = "addNewCarPositive", dataProviderClass = DPAddCar.class)
     public void createCarPositiveTestDP(CarDto car)
     {
+       createCarPage.typeLetCarWorkForm(car);
+       createCarPage.clickBtnSubmit();
+       Assert.assertTrue(createCarPage.isPopUpMessagePresent(car.getManufacture() + " " + car.getModel() + " " + "added successful"));
+    }
+
+    @Test(dataProvider = "dataProviderCarFile", dataProviderClass = DPAddCar.class)
+    public void createCarPositiveTestDPFile(CarDto car, Method method)
+    {
+       logger.info(method.getName() + "start with data-->" + car.toString());
        createCarPage.typeLetCarWorkForm(car);
        createCarPage.clickBtnSubmit();
        Assert.assertTrue(createCarPage.isPopUpMessagePresent(car.getManufacture() + " " + car.getModel() + " " + "added successful"));
