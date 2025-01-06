@@ -5,6 +5,7 @@ import dto.CarDto;
 import dto.UserDtoLombok;
 import enums.Fuel;
 import manager.AppManager;
+import org.openqa.selenium.TakesScreenshot;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
@@ -12,13 +13,12 @@ import org.testng.annotations.Test;
 import pages.CreateCarPage;
 import pages.LoginPage;
 import pages.SearchPage;
-import utilits.RandomUtils;
 import utilits.RetryAnalyzer;
 import utilits.TestNGListener;
-
 import java.lang.reflect.Method;
 import java.util.Random;
-import java.util.Random.*;
+import static utilits.PropertiesReader.*;
+import static utilits.TakeScreenshot.*;
 
 @Listeners(TestNGListener.class)
 
@@ -34,8 +34,8 @@ public class CreateCarTests extends AppManager
     {
 
         UserDtoLombok user = UserDtoLombok.builder()
-                .email("shevt2827@gmail.com")
-                .password("Password123!")
+                .email(getProperty("login.properties","email"))
+                .password(getProperty("login.properties","password"))
                 .build();
 
         loginPage = new LoginPage(getDriver());
@@ -71,6 +71,7 @@ public class CreateCarTests extends AppManager
                .build();
        createCarPage.typeLetCarWorkForm(car);
        createCarPage.clickBtnSubmit();
+       takeScreenshots((TakesScreenshot) getDriver());
        Assert.assertTrue(createCarPage.isPopUpMessagePresent(car.getManufacture() + " " + car.getModel() + " " + "added successful"));
     }
     //HW 15

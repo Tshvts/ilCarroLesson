@@ -1,6 +1,0 @@
-13:44:47.805 [Test worker] INFO  manager.AppManager - Start testing-->createCarPositiveTestDP
-13:44:54.320 [Test worker] INFO  manager.AppManager - Stop testing-->createCarPositiveTestDP
-13:44:54.321 [Test worker] INFO  manager.AppManager - Start testing-->createCarPositiveTestDP
-13:45:00.954 [Test worker] INFO  manager.AppManager - Stop testing-->createCarPositiveTestDP
-13:45:00.956 [Test worker] INFO  manager.AppManager - Start testing-->createCarPositiveTestDP
-13:45:07.887 [Test worker] INFO  manager.AppManager - Stop testing-->createCarPositiveTestDP
