@@ -11,7 +11,7 @@
     </appender>
 
     <appender name="FILE" class="ch.qos.logback.core.FileAppender"> <!--input to file-->
-        <file>test_logs/log-${bySecond}.log</file>
+        <file>src/test/resources/test_logs/log-${bySecond}.log</file>
         <maxHistory>5</maxHistory>  <!-- keep log file 5 days -->
         <totalSizeCap>10GB</totalSizeCap> <!-- max total size 10 gb -->
         <encoder>

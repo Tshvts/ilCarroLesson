@@ -32,9 +32,9 @@ public class LoginTests extends AppManager
         email = i+"bob_adk_@gmail.com";
         password = "Password123!";
         UserDtoLombok user = UserDtoLombok.builder()
-                .name("Bob")
+                .firstName("Bob")
                 .lastName("Doe")
-                .email(email)
+                .username(email)
                 .password(password)
                 .build();
         new SearchPage(getDriver()).clickBtnSignUp();
@@ -48,7 +48,7 @@ public class LoginTests extends AppManager
     public void loginPositiveTest()
         {
             UserDtoLombok user = UserDtoLombok.builder()
-                    .email(email)
+                    .username(email)
                     .password(password)
                     .build();
 
@@ -66,7 +66,7 @@ public class LoginTests extends AppManager
         public void loginNegativeTest()
         {
             UserDtoLombok user = UserDtoLombok.builder()
-                    .email("dddddddddd@f")
+                    .username("dddddddddd@f")
                     .password(password)
                     .build();
             loginPage = new LoginPage(getDriver());

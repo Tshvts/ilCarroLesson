@@ -14,7 +14,7 @@ public class TakeScreenshot {
         SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd_HH_mm_ss");
         Date date = new Date(System.currentTimeMillis());
         String currentDate = formater.format(date);
-        String fileName = "screenshots/" + currentDate + ".png";
+        String fileName = "src/test/resources/screenshots/" + currentDate + ".png";
 
         return fileName;
     }

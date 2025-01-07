@@ -12,8 +12,8 @@ import lombok.ToString;
 
 public class UserDtoLombok
 {
-    private String name;
+    private String firstName;
     private String lastName;
-    private String email;
+    private String username;
     private String password;
 }

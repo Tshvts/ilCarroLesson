@@ -22,9 +22,9 @@ public class RegistrationTests extends AppManager
     {
         int i = new Random().nextInt(1000)+1000;
         UserDtoLombok user = UserDtoLombok.builder()
-                .name("Bob")
+                .firstName("Bob")
                 .lastName("Doe")
-                .email(i+"bob_adk_@gmail.com")
+                .username(i+"bob_adk_@gmail.com")
                 .password("Password123!")
                 .build();
         new SearchPage(getDriver()).clickBtnSignUp();
@@ -42,9 +42,9 @@ public class RegistrationTests extends AppManager
     {
         int i = new Random().nextInt(1000)+1000;
         UserDtoLombok user = UserDtoLombok.builder()
-                .name("    ") // there is a bug (user can register with only symbols or numbers)
+                .firstName("    ") // there is a bug (user can register with only symbols or numbers)
                 .lastName("Doe")
-                .email(i+"bob_adk_@gmail.com")
+                .username(i+"bob_adk_@gmail.com")
                 .password("Password123!")
                 .build();
         new SearchPage(getDriver()).clickBtnSignUp();
@@ -60,9 +60,9 @@ public class RegistrationTests extends AppManager
     {
         int i = new Random().nextInt(1000)+1000;
         UserDtoLombok user = UserDtoLombok.builder()
-                .name("Tanya")
+                .firstName("Tanya")
                 .lastName("      ")// there is a bug (user can register with only symbols or numbers)
-                .email(i+"bob_adk_@gmail.com")
+                .username(i+"bob_adk_@gmail.com")
                 .password("Password123!")
                 .build();
         new SearchPage(getDriver()).clickBtnSignUp();
@@ -78,9 +78,9 @@ public class RegistrationTests extends AppManager
     {
         int i = new Random().nextInt(1000)+1000;
         UserDtoLombok user = UserDtoLombok.builder()
-                .name("Tanya")
+                .firstName("Tanya")
                 .lastName("Fidelman")
-                .email(i+"gmail.com")
+                .username(i+"gmail.com")
                 .password("Password123!")
                 .build();
         new SearchPage(getDriver()).clickBtnSignUp();
@@ -95,9 +95,9 @@ public class RegistrationTests extends AppManager
     {
         int i = new Random().nextInt(1000)+1000;
         UserDtoLombok user = UserDtoLombok.builder()
-                .name("Tanya")
+                .firstName("Tanya")
                 .lastName("Fidelman")
-                .email(i+"bob_adk_@gmail.com")
+                .username(i+"bob_adk_@gmail.com")
                 .password("Pa")
                 .build();
         new SearchPage(getDriver()).clickBtnSignUp();
@@ -112,9 +112,9 @@ public class RegistrationTests extends AppManager
     {
         int i = new Random().nextInt(1000)+1000;
         UserDtoLombok user = UserDtoLombok.builder()
-                .name("Tanya")
+                .firstName("Tanya")
                 .lastName("Fidelman")
-                .email(i+"bob_adk_@gmail.com")
+                .username(i+"bob_adk_@gmail.com")
                 .password("aaaaaaaa")
                 .build();
         new SearchPage(getDriver()).clickBtnSignUp();
@@ -129,9 +129,9 @@ public class RegistrationTests extends AppManager
     {
         int i = new Random().nextInt(1000)+1000;
         UserDtoLombok user = UserDtoLombok.builder()
-                .name("Bob")
+                .firstName("Bob")
                 .lastName("Doe")
-                .email(i+"bob_adk_@gmail.com")
+                .username(i+"bob_adk_@gmail.com")
                 .password("Password123!")
                 .build();
         new SearchPage(getDriver()).clickBtnSignUp();

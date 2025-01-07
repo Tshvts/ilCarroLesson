@@ -34,7 +34,7 @@ public class CreateCarTests extends AppManager
     {
 
         UserDtoLombok user = UserDtoLombok.builder()
-                .email(getProperty("login.properties","email"))
+                .username(getProperty("login.properties","email"))
                 .password(getProperty("login.properties","password"))
                 .build();
 
@@ -85,6 +85,15 @@ public class CreateCarTests extends AppManager
 
     @Test(dataProvider = "dataProviderCarFile", dataProviderClass = DPAddCar.class)
     public void createCarPositiveTestDPFile(CarDto car, Method method)
+    {
+       logger.info(method.getName() + "start with data-->" + car.toString());
+       createCarPage.typeLetCarWorkForm(car);
+       createCarPage.clickBtnSubmit();
+       Assert.assertTrue(createCarPage.isPopUpMessagePresent(car.getManufacture() + " " + car.getModel() + " " + "added successful"));
+    }
+
+    @Test(dataProvider = "dataProviderCarFileProperties", dataProviderClass = DPAddCar.class)
+    public void createCarPositiveTestDPFileProperties(CarDto car, Method method)
     {
        logger.info(method.getName() + "start with data-->" + car.toString());
        createCarPage.typeLetCarWorkForm(car);

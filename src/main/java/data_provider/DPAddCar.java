@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
+import static utilits.PropertiesReader.*;
 
 public class DPAddCar
 {
@@ -111,6 +112,42 @@ public class DPAddCar
         try
         {
             bufferedReader = new BufferedReader(new FileReader("src/main/resources/data_carNew.csv"));
+            String line = bufferedReader.readLine();
+            while(line!=null)
+            {
+                String[] splitArray = line.split(";");
+                CarDto car = CarDto.builder()
+                        .city(splitArray[0])
+                        .serialNumber(splitArray[1])
+                        .manufacture(splitArray[2])
+                        .model(splitArray[3])
+                        .year(splitArray[4])
+                        .fuel(splitArray[5])
+                        .seats(Integer.parseInt(splitArray[6]))
+                        .carClass(splitArray[7])
+                        .price(Double.parseDouble(splitArray[8]))
+                        .about(splitArray[9])
+                        .build();
+                carDtoList.add(car);
+                line = bufferedReader.readLine();
+            }
+        }
+        catch (IOException e)
+        {
+            throw new RuntimeException(e);
+        }
+        return carDtoList.listIterator();
+    }
+
+    @DataProvider
+    public Iterator<CarDto> dataProviderCarFileProperties() throws IOException
+    {
+        List<CarDto> carDtoList = new ArrayList<>();
+        BufferedReader bufferedReader;
+        try
+        {
+            bufferedReader = new BufferedReader(new FileReader
+                    ("src/main/resources/" + getProperty("login.properties", "fileNameDPCar")));
             String line = bufferedReader.readLine();
             while(line!=null)
             {

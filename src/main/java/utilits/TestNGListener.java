@@ -13,36 +13,36 @@ public class TestNGListener implements ITestListener
     @Override
     public void onTestStart(ITestResult result) {
         ITestListener.super.onTestStart(result);
-        logger.info("Start test: " + result.getMethod());
+        logger.info("METHOD ===> " + result.getMethod());
     }
 
     @Override
     public void onTestSuccess(ITestResult result) {
         ITestListener.super.onTestSuccess(result);
-        logger.info("Successful test: " + result.getMethod());
+        logger.info(result.getMethod() + " <=== PASS");
     }
 
     @Override
     public void onTestFailure(ITestResult result) {
         ITestListener.super.onTestFailure(result);
-        logger.info("Failed test: " + result.getMethod());
+        logger.info(result.getMethod() + " <=== FAIL");
     }
 
     @Override
     public void onTestSkipped(ITestResult result) {
         ITestListener.super.onTestSkipped(result);
-        logger.info("Skipped test: " + result.getMethod());
+        logger.info(result.getMethod() + " <=== IGNORE");
     }
 
     @Override
     public void onStart(ITestContext context) {
         ITestListener.super.onStart(context);
-        logger.info("Start testing on date: " + context.getStartDate() + "=========");
+        logger.info("DATE OF THE START ===> "+context.getStartDate());
     }
 
     @Override
     public void onFinish(ITestContext context) {
         ITestListener.super.onFinish(context);
-        logger.info("Stop testing on date: " + context.getStartDate() + "=========");
+        logger.info("DATE OF THE END ===> "+context.getEndDate());
     }
 }
