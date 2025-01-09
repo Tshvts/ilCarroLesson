@@ -10,9 +10,15 @@ public interface BaseApi
 
     String REGISTRATION = "v1/user/registration/usernamepassword";
 
+    String INVALID_TOKEN = "Bearer NoAuth";
+
+    String LOGIN = "v1/user/login/usernamepassword";
+
     Gson GSON = new Gson();
 
     MediaType JSON = MediaType.get("application/json");
+
+    MediaType INVALID_JSON = MediaType.get("application/js");
 
     OkHttpClient OK_HTTP_CLIENT = new OkHttpClient();
 }
