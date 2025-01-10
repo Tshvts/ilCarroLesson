@@ -14,6 +14,10 @@ public interface BaseApi
 
     String LOGIN = "v1/user/login/usernamepassword";
 
+    String ADD_NEW_CAR = "v1/cars";
+
+    String AUTH = "Authorization";
+
     Gson GSON = new Gson();
 
     MediaType JSON = MediaType.get("application/json");
