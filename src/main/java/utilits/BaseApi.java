@@ -18,6 +18,10 @@ public interface BaseApi
 
     String AUTH = "Authorization";
 
+    String GET_USER_CARS = "v1/cars/my";
+
+    String DELETE_CAR = "v1/cars/";
+
     Gson GSON = new Gson();
 
     MediaType JSON = MediaType.get("application/json");
@@ -25,4 +29,5 @@ public interface BaseApi
     MediaType INVALID_JSON = MediaType.get("application/js");
 
     OkHttpClient OK_HTTP_CLIENT = new OkHttpClient();
+
 }
