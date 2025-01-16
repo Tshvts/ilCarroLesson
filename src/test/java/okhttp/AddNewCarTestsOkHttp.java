@@ -22,7 +22,7 @@ public class AddNewCarTestsOkHttp implements BaseApi
     TokenDto tokenDto;
     SoftAssert softAssert = new SoftAssert();
 
-    @BeforeClass //get token one time, beforemethod -> getting is every times
+    @BeforeClass(alwaysRun = true) //get token one time, beforemethod -> getting is every times
     public void login()
     {
         UserDtoLombok user = UserDtoLombok.builder()

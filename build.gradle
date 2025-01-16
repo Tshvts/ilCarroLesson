@@ -30,3 +30,11 @@ dependencies {
 test {
     useTestNG()
 }
+
+task smoketests(type: Test)
+{
+    useTestNG()
+            {
+                suites 'src/test/resources/smoketests.xml'
+            }
+}
