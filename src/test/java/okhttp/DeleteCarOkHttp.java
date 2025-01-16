@@ -121,6 +121,78 @@ public class DeleteCarOkHttp implements BaseApi
         }
     }
 
+//LESSON 19
+//private CarDtoApi[] getAllUserCars()
+//{
+//    Request request = new Request.Builder()
+//            .url(BASE_URL + GET_USER_CARS)
+//            .addHeader(AUTH,tokenDto.getAccessToken())
+//            .get()
+//            .build();
+//
+//    try(Response response = OK_HTTP_CLIENT.newCall(request).execute())
+//    {
+//        if (response.isSuccessful())
+//        {
+//            CarsDto carsDto = GSON.fromJson(response.body().string(),CarsDto.class);
+//            return carsDto.getCars();
+//        }
+//
+//        else
+//        {
+//            System.out.println("Wrong get request" + response.code());
+//            return null;
+//        }
+//    }
+//
+//    catch (IOException e)
+//    {
+//        System.out.println("Created exception get user cars, return null");
+//        e.printStackTrace(); //print exception
+//        return null;
+//    }
+//}
+//    @Test
+//    public void deleteCarByIdPositiveTest()
+//    {
+//        String serialNumberFirstElement = "";
+//        CarDtoApi[] arrayCars = getAllUserCars();
+//        if(arrayCars != null)
+//        {
+//            serialNumberFirstElement = arrayCars[0].getSerialNumber();
+//            System.out.println("==> " + serialNumberFirstElement);
+//        }
+//
+//        else
+//        {
+//            Assert.fail("Method get returned null");
+//        }
+//
+//        Request request = new Request.Builder()
+//                .url(BASE_URL + GET_USER_CARS + "/" + serialNumberFirstElement)
+//                .addHeader(AUTH,tokenDto.getAccessToken())
+//                .delete()
+//                .build();
+//
+//        try(Response response = OK_HTTP_CLIENT.newCall(request).execute())
+//        {
+//            if (response.isSuccessful())
+//            {
+//                System.out.println("Successful");
+//            }
+//
+//            else
+//            {
+//                Assert.fail("Method delete isn't successful: " + response.code());
+//            }
+//        }
+//
+//        catch (IOException e)
+//        {
+//            Assert.fail("Created exception");
+//        }
+//    }
+
 
     @Test
     public void deleteCarNegativeTest_400()
